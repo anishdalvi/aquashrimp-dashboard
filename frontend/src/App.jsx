@@ -5,7 +5,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom'
-import { Home, Login, Register } from './pages'
+import { Home } from './pages'
 import { Navbar } from './components'
 
 function App() {
@@ -14,13 +14,11 @@ function App() {
   return (
     <div>
       <Router>
-      <h1>Vite + React</h1>
+      <h1>AquaShrimp</h1>
         <div className="container">
-          <Navbar />
+          {/* <Navbar /> */}
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/login' element={<Login />} />
           </Routes>
         </div>
       </Router>

@@ -2,12 +2,14 @@ const asyncHandler = require("express-async-handler");
 const Aqua = require("../models/aquaModel");
 const axios = require('axios');
 
+const BLYNK_TOKEN = process.env.BLYNK_TOKEN;
+
 const fetchData = async () => {
   try {
-    const response1 = await axios.get('https://blynk.cloud/external/api/get?token=WfQITWPhO1JeF3zrRGXvt09vi14Ekms-&v5');
+    const response1 = await axios.get(`https://blynk.cloud/external/api/get?token=${BLYNK_TOKEN}&v5`);
     const data1 = response1.data;
 
-    const response2 = await axios.get('https://blynk.cloud/external/api/get?token=WfQITWPhO1JeF3zrRGXvt09vi14Ekms-&v6');
+    const response2 = await axios.get(`https://blynk.cloud/external/api/get?token=${BLYNK_TOKEN}&v6`);
     const data2 = response2.data;
 
     const newData = new Aqua({
