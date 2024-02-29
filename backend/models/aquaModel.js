@@ -11,7 +11,7 @@ const aquaSchema = mongoose.Schema(
       required: true,
     },
     time: {
-      type: Number,
+      type: String,
       required: true,
     },
   },
@@ -20,4 +20,4 @@ const aquaSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Aqua", aquaSchema);
+module.exports = mongoose.model("Data", aquaSchema);
