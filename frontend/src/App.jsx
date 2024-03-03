@@ -10,11 +10,14 @@ import { Navbar } from './components'
 
 function App() {
 
+  setInterval(() => {
+    window.location.reload();
+  }, 10000);
 
   return (
     <div>
       <Router>
-      <h1>AquaShrimp</h1>
+        <h1>AquaShrimp</h1>
         <div className="container">
           {/* <Navbar /> */}
           <Routes>
@@ -22,7 +25,7 @@ function App() {
           </Routes>
         </div>
       </Router>
-      
+
     </div>
   )
 }
