@@ -71,6 +71,7 @@ const fetchData = async () => {
 
 const saveDataToMongoDB = asyncHandler(async (req, res) => {
   try {
+    console.log("BLYNK_TOKEN:", BLYNK_TOKEN);
     const data = await fetchData();
     //console.log("Data Saved");
     res.status(200).json({ message: "Data Saved to MongoDB", data });
