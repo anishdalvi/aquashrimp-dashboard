@@ -31,8 +31,8 @@ const Home = () => {
         <p>Loading...</p>
       ) : data ? (
         <div>
-          <p>Temperature: {data.data.Temperature}</p>
-          <p>PH: {data.data.PH}</p>
+          <p>Temperature: {data.Temperature}</p>
+          <p>PH: {data.PH}</p>
         </div>
       ) : (
         <p>No data available</p>
