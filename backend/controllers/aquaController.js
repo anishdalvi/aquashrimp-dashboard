@@ -6,10 +6,18 @@ const BLYNK_TOKEN = process.env.BLYNK_TOKEN;
 
 const fetchData = async () => {
   try {
+    const apiUrl = `https://blynk.cloud/external/api/get?token=${BLYNK_TOKEN}&v0`;
+    console.log("Request URL:", apiUrl);
+
+    const response = await axios.get(apiUrl);
+    console.log("Blynk API Response:", response.data);
+    
     const response1 = await axios.get(
       `https://blynk.cloud/external/api/get?token=${BLYNK_TOKEN}&v0`
     );
+
     const data1 = response1.data;
+    console.log(response1.data);
 
     const response2 = await axios.get(
       `https://blynk.cloud/external/api/get?token=${BLYNK_TOKEN}&v1`
@@ -38,7 +46,26 @@ const fetchData = async () => {
     return newData; // Return the data here
   } catch (error) {
     console.error("Error fetching data:", error);
-    throw new Error("Error fetching data");
+    //throw new Error("Error fetching data");
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.error(
+        "Server responded with non-2xx status:",
+        error.response.data
+      );
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error("No response received from the server");
+    } else {
+      // Something happened in setting up the request
+      console.error("Error setting up the request:", error.message);
+    }
+
+    // Handle specific error details from Blynk API
+    if (error.response && error.response.data && error.response.data.error) {
+      console.error("Blynk API Error:", error.response.data.error);
+    }
   }
 };
 
