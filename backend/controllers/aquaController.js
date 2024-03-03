@@ -27,7 +27,12 @@ const fetchData = async () => {
       PH: data2,
       time: formattedTime,
     });
-    await newData.save();
+    try {
+      await newData.save();
+    } catch (mongoError) {
+      console.error("MongoDB Save Error:", mongoError);
+      throw new Error("Error saving data to MongoDB");
+    }
     //console.log(newData);
 
     return newData; // Return the data here
