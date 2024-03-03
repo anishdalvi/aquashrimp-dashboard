@@ -10,9 +10,9 @@ import { Navbar } from './components'
 
 function App() {
 
-  setInterval(() => {
+  /* setInterval(() => {
     window.location.reload();
-  }, 10000);
+  }, 10000); */
 
   return (
     <div>
