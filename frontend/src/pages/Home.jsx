@@ -12,7 +12,7 @@ const Home = () => {
         const response = await axios.get('/api/aqua/data'); // Assuming your backend API endpoint is '/api/aqua/data'
         setData(response.data);
         setLoading(false);
-        //console.log(response.data.data)
+        console.log(response.data)
       } catch (error) {
         console.error('Error fetching data:', error);
         setLoading(false);
