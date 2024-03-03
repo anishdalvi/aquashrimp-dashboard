@@ -28,7 +28,9 @@ const fetchData = async () => {
       time: formattedTime,
     });
     await newData.save();
-    // console.log(newData);
+    //console.log(newData);
+
+    return newData; // Return the data here
   } catch (error) {
     console.error("Error fetching data:", error);
     throw new Error("Error fetching data");
@@ -37,9 +39,9 @@ const fetchData = async () => {
 
 const saveDataToMongoDB = asyncHandler(async (req, res) => {
   try {
-    await fetchData();
-    console.log("Data Saved");
-    res.status(200).json({ message: "Data Saved to MongoDB" });
+    const data = await fetchData();
+    //console.log("Data Saved");
+    res.status(200).json({ message: "Data Saved to MongoDB", data });
   } catch (error) {
     console.error("Error saving data to MongoDB:", error);
     res.status(500).json({ message: "Error saving data to MongoDB" });

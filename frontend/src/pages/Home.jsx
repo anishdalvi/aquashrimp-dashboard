@@ -12,7 +12,7 @@ const Home = () => {
         const response = await axios.get('/api/aqua/data'); // Assuming your backend API endpoint is '/api/aqua/data'
         setData(response.data);
         setLoading(false);
-        console.log(response.data)
+        //console.log(response.data.data)
       } catch (error) {
         console.error('Error fetching data:', error);
         setLoading(false);
@@ -22,6 +22,8 @@ const Home = () => {
     fetchData();
   }, []);
   
+  // console.log(data);
+
   return (
     <div>
       <h2>Dashboard</h2>
@@ -29,8 +31,8 @@ const Home = () => {
         <p>Loading...</p>
       ) : data ? (
         <div>
-          <p>Temperature: {data.Temperature}</p>
-          <p>PH: {data.PH}</p>
+          <p>Temperature: {data.data.Temperature}</p>
+          <p>PH: {data.data.PH}</p>
         </div>
       ) : (
         <p>No data available</p>
